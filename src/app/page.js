@@ -15,7 +15,7 @@ export default async function Home() {
             <Card
               image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               name={character.name}
-              link={character.id}
+              link={character.id.toString()}
             />
           );
         })}
