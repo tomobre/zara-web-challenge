@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const Wrapper = styled.div`
   background-color: black;
@@ -16,12 +17,14 @@ const Wrapper = styled.div`
 export default function Navbar() {
   return (
     <Wrapper>
-      <Image
-        alt="marvel-logo"
-        width={140}
-        height={60}
-        src={"/assets/Marvel logo.png"}
-      />
+      <Link href="./">
+        <Image
+          alt="marvel-logo"
+          width={140}
+          height={60}
+          src={"/assets/Marvel logo.png"}
+        />
+      </Link>
       <Image
         alt="favorites-heart"
         width={30}

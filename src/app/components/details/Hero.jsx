@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Wrapper from "./Wrapper";
 import Image from "next/image";
 import { useAppContext } from "../../context";
+import { useEffect } from "react";
 
 const Grid = styled.div`
   display: grid;
@@ -22,13 +23,13 @@ const GridCol = styled.div`
 
 export default function Hero({ name, description, image, id }) {
   const { favorites, setFavorites } = useAppContext();
-  const checkFav = favorites.indexOf(id);
+  const checkFav = favorites.indexOf(id.toString());
 
   const toggleFavorite = (id) => {
     if (checkFav === -1) {
-      setFavorites([...favorites, id]);
+      setFavorites([...favorites, id.toString()]);
     } else {
-      favorites.splice(0, 1);
+      favorites.splice(checkFav, 1);
       setFavorites([...favorites]);
     }
   };
@@ -36,7 +37,7 @@ export default function Hero({ name, description, image, id }) {
   return (
     <Wrapper color={"black"}>
       <Grid>
-        <Image width={320} height={320} src={image} />
+        <Image alt={name} width={320} height={320} src={image} />
         <GridCol>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h2

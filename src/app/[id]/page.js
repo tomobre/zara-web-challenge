@@ -20,6 +20,7 @@ export default async function Page({ params }) {
   const fetchCharacterComics = await getCharacterComics(id);
   const { results: characterResults } = fetchData.data;
   const { results: comicsResults } = fetchCharacterComics.data;
+
   return (
     <div>
       <Hero
