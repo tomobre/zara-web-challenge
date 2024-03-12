@@ -25,12 +25,14 @@ export default function Navbar() {
           src={"/assets/Marvel logo.png"}
         />
       </Link>
-      <Image
-        alt="favorites-heart"
-        width={30}
-        height={30}
-        src={"/assets/Heart_icon_r.png"}
-      />
+      <Link href="/favorites">
+        <Image
+          alt="favorites-heart"
+          width={30}
+          height={30}
+          src={"/assets/Heart_icon_r.png"}
+        />
+      </Link>
     </Wrapper>
   );
 }

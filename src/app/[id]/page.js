@@ -24,7 +24,7 @@ export default async function Page({ params }) {
   return (
     <div>
       <Hero
-        id={id}
+        id={id.toString()}
         name={characterResults[0].name}
         description={characterResults[0].description}
         image={`${characterResults[0].thumbnail.path}.${characterResults[0].thumbnail.extension}`}

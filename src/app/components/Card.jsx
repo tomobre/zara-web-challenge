@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useAppContext } from "../context";
-import { useEffect } from "react";
 
 const Container = styled.div`
   height: 250px;
@@ -28,13 +27,13 @@ const Footer = styled.div`
   align-items: center;
 `;
 
-export default function Card({ image, name, link, id }) {
+export default function Card({ image, name, id, description }) {
   const { favorites, setFavorites } = useAppContext();
-  const checkFav = favorites.indexOf(id.toString());
+  const checkFav = favorites.findIndex((character) => character.id === id);
 
   const toggleFavorite = (id) => {
     if (checkFav === -1) {
-      setFavorites([...favorites, id.toString()]);
+      setFavorites([...favorites, { name, description, image, id }]);
     } else {
       favorites.splice(checkFav, 1);
       setFavorites([...favorites]);
@@ -43,7 +42,7 @@ export default function Card({ image, name, link, id }) {
 
   return (
     <Container>
-      <Link href={link}>
+      <Link href={id}>
         <Image alt={name} width={180} height={180} src={image} />
       </Link>
       <Footer>

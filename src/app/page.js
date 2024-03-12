@@ -13,10 +13,10 @@ export default async function Home() {
           return (
             <Card
               key={character.id}
-              id={character.id}
+              id={character.id.toString()}
+              description={character.description}
               image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               name={character.name}
-              link={character.id.toString()}
             />
           );
         })}
