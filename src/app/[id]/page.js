@@ -40,7 +40,7 @@ export default async function Page({ params }) {
           COMICS
         </h3>
         <ScrollComic>
-          {comicsResults.map((comic) => {
+          {comicsResults.slice(0, 20).map((comic) => {
             const date = comic.dates[0].date.slice(0, 4);
             return (
               <ComicCard

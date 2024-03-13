@@ -1,4 +1,5 @@
 import md5 from "md5";
+import { redirect } from "next/navigation";
 
 const TS = 1;
 const privateKey = process.env.PRIVATE_KEY;
@@ -13,6 +14,7 @@ export async function getData() {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
+
     throw new Error("Failed to fetch data");
   }
 
@@ -26,6 +28,7 @@ export async function getCharacter(id) {
   );
 
   if (!res.ok) {
+    redirect("/404");
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
