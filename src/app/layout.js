@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
+import { Roboto_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import { AppWrapper } from "./context";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto_Condensed({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Marvel app",
