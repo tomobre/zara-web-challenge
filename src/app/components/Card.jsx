@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useAppContext } from "../context";
 
 const Container = styled.div`
-  height: 250px;
+  height: 260px;
 
   @media only screen and (max-width: 375px) {
     display: flex;
@@ -37,6 +37,7 @@ const Footer = styled.div`
 export default function Card({ image, name, id, description }) {
   const { favorites, setFavorites } = useAppContext();
   const checkFav = favorites.findIndex((character) => character.id === id);
+  name = name.length > 30 ? name.slice(0, 28) + "..." : name;
 
   const toggleFavorite = (id) => {
     if (checkFav === -1) {
