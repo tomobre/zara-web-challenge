@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import styled from "styled-components";
+'use client';
+import React from 'react';
+import styled from 'styled-components';
 
 const SpanContainer = styled.div`
   font-size: 16px;
@@ -14,7 +14,7 @@ export default function ResultCount({ count }) {
     <SpanContainer>
       {count > 0 && (
         <span>
-          {count} Result{count > 1 && "s"}
+          {count} Result{count > 1 && 's'}
         </span>
       )}
     </SpanContainer>

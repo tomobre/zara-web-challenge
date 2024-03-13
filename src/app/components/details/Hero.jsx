@@ -1,8 +1,8 @@
-"use client";
-import styled from "styled-components";
-import Wrapper from "./Wrapper";
-import Image from "next/image";
-import { useAppContext } from "../../context";
+'use client';
+import styled from 'styled-components';
+import Wrapper from './Wrapper';
+import Image from 'next/image';
+import { useAppContext } from '../../context';
 
 const Grid = styled.div`
   display: grid;
@@ -27,6 +27,12 @@ const GridCol = styled.div`
   flex-direction: column;
 `;
 
+const Name = styled.h2`
+  color: white;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+`;
+
 export default function Hero({ name, description, image, id }) {
   const { favorites, setFavorites } = useAppContext();
   const checkFav = favorites.findIndex((character) => character.id === id);
@@ -41,20 +47,18 @@ export default function Hero({ name, description, image, id }) {
   };
 
   return (
-    <Wrapper color={"black"}>
+    <Wrapper color={'black'}>
       <Grid>
-        <Image alt={name} width={320} height={320} src={image} />
+        <Image
+          priority={true}
+          alt={name}
+          width={320}
+          height={320}
+          src={image}
+        />
         <GridCol>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h2
-              style={{
-                color: "white",
-                marginBottom: "2rem",
-                textTransform: "uppercase",
-              }}
-            >
-              {name}
-            </h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Name>{name}</Name>
             <div
               onClick={() => {
                 toggleFavorite(id);
@@ -62,25 +66,27 @@ export default function Hero({ name, description, image, id }) {
             >
               {checkFav === -1 ? (
                 <Image
-                  style={{ marginLeft: "10px" }}
+                  priority={false}
+                  style={{ marginLeft: '10px' }}
                   width={30}
-                  alt="white-heart"
+                  alt='white-heart'
                   height={30}
-                  src={"/assets/Heart_icon_w.png"}
+                  src={'/assets/Heart_icon_w.png'}
                 />
               ) : (
                 <Image
-                  style={{ marginLeft: "10px" }}
-                  alt="red-heart"
+                  priority={false}
+                  style={{ marginLeft: '10px' }}
+                  alt='red-heart'
                   width={30}
                   height={30}
-                  src={"/assets/Heart_icon_r.png"}
+                  src={'/assets/Heart_icon_r.png'}
                 />
               )}
             </div>
           </div>
 
-          <p style={{ color: "white" }}>{description}</p>
+          <p style={{ color: 'white' }}>{description}</p>
         </GridCol>
       </Grid>
     </Wrapper>

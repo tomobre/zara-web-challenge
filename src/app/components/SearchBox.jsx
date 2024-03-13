@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useDebounce } from "use-debounce";
+'use client';
+import React from 'react';
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useDebounce } from 'use-debounce';
 
 const Container = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const Input = styled.input`
 `;
 
 export default function SearchBox() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const router = useRouter();
   const [query] = useDebounce(text, 500);
 
@@ -48,11 +48,11 @@ export default function SearchBox() {
     <Container>
       <span>🔍</span>
       <Input
-        placeholder=" SEARCH A CHARACTER..."
+        placeholder=' SEARCH A CHARACTER...'
         onChange={(e) => {
           setText(e.target.value);
         }}
-        type="text"
+        type='text'
       />
     </Container>
   );

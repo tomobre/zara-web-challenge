@@ -51,13 +51,20 @@ export default function Card({ image, name, id, description }) {
   return (
     <Container>
       <Link href={id}>
-        <Image alt={name} width={180} height={180} src={image} />
+        <Image
+          priority={false}
+          alt={name}
+          width={180}
+          height={180}
+          src={image}
+        />
       </Link>
       <Footer>
         <p style={{ color: "white" }}>{name}</p>
         <div onClick={() => toggleFavorite(id)}>
           {checkFav === -1 ? (
             <Image
+              priority={false}
               alt="white-heart"
               width={10}
               height={10}
@@ -65,6 +72,7 @@ export default function Card({ image, name, id, description }) {
             />
           ) : (
             <Image
+              priority={false}
               alt="red-heart"
               width={10}
               height={10}

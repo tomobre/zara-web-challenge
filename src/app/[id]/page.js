@@ -1,8 +1,8 @@
-import { getData, getCharacter, getCharacterComics } from "../fetch/fetch";
-import Wrapper from "../components/details/Wrapper";
-import Hero from "../components/details/Hero";
-import ComicCard from "../components/details/ComicCard";
-import ScrollComic from "../components/details/ScrollComic";
+import { getData, getCharacter, getCharacterComics } from '../fetch/fetch';
+import Wrapper from '../components/details/Wrapper';
+import Hero from '../components/details/Hero';
+import ComicCard from '../components/details/ComicCard';
+import ScrollComic from '../components/details/ScrollComic';
 
 export async function generateStaticParams() {
   const data = await getData();
@@ -28,12 +28,12 @@ export default async function Page({ params }) {
         description={characterResults[0].description}
         image={`${characterResults[0].thumbnail.path}.${characterResults[0].thumbnail.extension}`}
       />
-      <Wrapper color={"white"}>
+      <Wrapper color={'white'}>
         <h3
           style={{
-            marginTop: "1.5rem",
-            marginBottom: "1.5rem",
-            fontSize: "23px",
+            marginTop: '1.5rem',
+            marginBottom: '1.5rem',
+            fontSize: '23px',
           }}
         >
           COMICS

@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
-import { useAppContext } from "../../context";
+'use client';
+import React from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useAppContext } from '../../context';
 
 const Wrapper = styled.div`
   background-color: black;
@@ -15,31 +15,35 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
+const Count = styled.p`
+  color: white;
+  margin-left: 1rem;
+`;
+
 export default function Navbar() {
   const { favorites } = useAppContext();
   return (
     <Wrapper>
-      <Link href="./">
+      <Link href='./'>
         <Image
-          alt="marvel-logo"
+          alt='marvel-logo'
+          priority
           width={140}
           height={60}
-          src={"/assets/Marvel logo.png"}
+          src={'/assets/Marvel logo.png'}
         />
       </Link>
       {favorites.length > 0 && (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Link href="/favorites">
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Link href='/favorites'>
             <Image
-              alt="favorites-heart"
+              alt='favorites-heart'
               width={30}
               height={30}
-              src={"/assets/Heart_icon_r.png"}
+              src={'/assets/Heart_icon_r.png'}
             />
           </Link>
-          <p style={{ color: "white", marginLeft: "1rem" }}>
-            {favorites.length}
-          </p>
+          <Count>{favorites.length}</Count>
         </div>
       )}
     </Wrapper>

@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import styled from "styled-components";
+'use client';
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: grid;
@@ -10,6 +10,10 @@ const Container = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 2rem;
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(4, 1fr);

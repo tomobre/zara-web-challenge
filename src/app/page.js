@@ -1,12 +1,12 @@
-import Wrapper from "./components/Wrapper";
-import Card from "./components/Card";
-import { getData, getSearchResult } from "./fetch/fetch";
-import SearchBox from "./components/SearchBox.jsx";
-import ResultCount from "./components/ResultCount";
+import Wrapper from './components/Wrapper';
+import Card from './components/Card';
+import { getData, getSearchResult } from './fetch/fetch';
+import SearchBox from './components/SearchBox.jsx';
+import ResultCount from './components/ResultCount';
 
 export default async function Home({ searchParams }) {
   const data =
-    searchParams.search !== ""
+    searchParams.search !== ''
       ? await getSearchResult(searchParams.search)
       : await getData();
   const characterList = data.data.results;
@@ -32,11 +32,11 @@ export default async function Home({ searchParams }) {
       ) : (
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "2rem",
-            fontSize: "20px",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '2rem',
+            fontSize: '20px',
           }}
         >
           No heroes found

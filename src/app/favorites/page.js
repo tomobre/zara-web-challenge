@@ -1,10 +1,10 @@
-"use client";
-import Wrapper from "../components/Wrapper";
-import Card from "../components/Card";
-import { useAppContext } from "../context";
-import styled from "styled-components";
-import SearchBox from "../components/SearchBox";
-import ResultCount from "../components/ResultCount";
+'use client';
+import Wrapper from '../components/Wrapper';
+import Card from '../components/Card';
+import { useAppContext } from '../context';
+import styled from 'styled-components';
+import SearchBox from '../components/SearchBox';
+import ResultCount from '../components/ResultCount';
 
 const NoContentWrapper = styled.div`
   margin: 4rem;
@@ -24,9 +24,9 @@ export default function Favorites({ searchParams }) {
   const { favorites } = useAppContext();
   const search = searchParams.search;
   const data =
-    search !== ""
+    search !== ''
       ? favorites.filter((favorite) =>
-          favorite.name.toLowerCase().startsWith(search?.toLowerCase())
+          favorite.name.toLowerCase().startsWith(search?.toLowerCase()),
         )
       : favorites;
 
@@ -49,7 +49,7 @@ export default function Favorites({ searchParams }) {
             );
           })}
         </Wrapper>
-      ) : search !== "" ? (
+      ) : search !== '' ? (
         <NoContentWrapper>
           <h3>No heroes found</h3>
         </NoContentWrapper>

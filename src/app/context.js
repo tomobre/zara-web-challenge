@@ -1,7 +1,7 @@
-"use client";
-import { createContext, useContext, useState } from "react";
+'use client';
+import { createContext, useContext, useState } from 'react';
 
-const AppContext = createContext({ hello: "world" });
+const AppContext = createContext({ hello: 'world' });
 
 export function AppWrapper({ children }) {
   const [favorites, setFavorites] = useState([]);
