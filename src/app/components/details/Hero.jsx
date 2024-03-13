@@ -9,6 +9,13 @@ const Grid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+
+  @media only screen and (max-width: 425px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const GridCol = styled.div`
@@ -55,6 +62,7 @@ export default function Hero({ name, description, image, id }) {
             >
               {checkFav === -1 ? (
                 <Image
+                  style={{ marginLeft: "10px" }}
                   width={30}
                   alt="white-heart"
                   height={30}
@@ -62,6 +70,7 @@ export default function Hero({ name, description, image, id }) {
                 />
               ) : (
                 <Image
+                  style={{ marginLeft: "10px" }}
                   alt="red-heart"
                   width={30}
                   height={30}

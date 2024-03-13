@@ -10,6 +10,16 @@ const Container = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (max-width: 425px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media only screen and (max-width: 375px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export default function Wrapper({ children }) {

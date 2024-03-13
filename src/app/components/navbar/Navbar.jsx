@@ -38,7 +38,6 @@ export default function Navbar() {
             />
           </Link>
           <p style={{ color: "white", marginLeft: "1rem" }}>
-            {" "}
             {favorites.length}
           </p>
         </div>

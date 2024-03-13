@@ -7,6 +7,13 @@ import { useAppContext } from "../context";
 
 const Container = styled.div`
   height: 250px;
+
+  @media only screen and (max-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const Footer = styled.div`
   &:before {

@@ -26,6 +26,12 @@ const Input = styled.input`
   &::placeholder {
     color: gray;
   }
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
 `;
 
 export default function SearchBox() {

@@ -1,5 +1,4 @@
 import { getData, getCharacter, getCharacterComics } from "../fetch/fetch";
-import Image from "next/image";
 import Wrapper from "../components/details/Wrapper";
 import Hero from "../components/details/Hero";
 import ComicCard from "../components/details/ComicCard";
