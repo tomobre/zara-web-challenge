@@ -46,3 +46,17 @@ export async function getCharacterComics(id) {
 
   return res.json();
 }
+
+export async function getSearchResult(input) {
+  const hash = md5(TS + privateKey + publicKey);
+  const res = await fetch(
+    `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&ts=${TS}&apikey=${apiKey}&hash=${hash}`
+  );
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}

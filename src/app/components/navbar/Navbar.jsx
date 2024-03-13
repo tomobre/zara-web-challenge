@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import { useAppContext } from "../../context";
 
 const Wrapper = styled.div`
   background-color: black;
@@ -15,6 +16,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Navbar() {
+  const { favorites } = useAppContext();
   return (
     <Wrapper>
       <Link href="./">
@@ -25,14 +27,22 @@ export default function Navbar() {
           src={"/assets/Marvel logo.png"}
         />
       </Link>
-      <Link href="/favorites">
-        <Image
-          alt="favorites-heart"
-          width={30}
-          height={30}
-          src={"/assets/Heart_icon_r.png"}
-        />
-      </Link>
+      {favorites.length > 0 && (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Link href="/favorites">
+            <Image
+              alt="favorites-heart"
+              width={30}
+              height={30}
+              src={"/assets/Heart_icon_r.png"}
+            />
+          </Link>
+          <p style={{ color: "white", marginLeft: "1rem" }}>
+            {" "}
+            {favorites.length}
+          </p>
+        </div>
+      )}
     </Wrapper>
   );
 }

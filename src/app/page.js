@@ -1,26 +1,47 @@
 import Wrapper from "./components/Wrapper";
 import Card from "./components/Card";
-import { getData } from "./fetch/fetch";
+import { getData, getSearchResult } from "./fetch/fetch";
+import SearchBox from "./components/SearchBox.jsx";
+import ResultCount from "./components/ResultCount";
 
-export default async function Home() {
-  const data = await getData();
+export default async function Home({ searchParams }) {
+  const data =
+    searchParams.search !== ""
+      ? await getSearchResult(searchParams.search)
+      : await getData();
   const characterList = data.data.results;
 
   return (
     <main>
-      <Wrapper>
-        {characterList.map((character) => {
-          return (
-            <Card
-              key={character.id}
-              id={character.id.toString()}
-              description={character.description}
-              image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              name={character.name}
-            />
-          );
-        })}
-      </Wrapper>
+      <SearchBox />
+      <ResultCount count={characterList.length} />
+      {characterList.length > 0 ? (
+        <Wrapper>
+          {characterList.map((character) => {
+            return (
+              <Card
+                key={character.id}
+                id={character.id.toString()}
+                description={character.description}
+                image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                name={character.name}
+              />
+            );
+          })}
+        </Wrapper>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "2rem",
+            fontSize: "20px",
+          }}
+        >
+          No heroes found
+        </div>
+      )}
     </main>
   );
 }
