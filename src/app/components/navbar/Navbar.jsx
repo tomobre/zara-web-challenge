@@ -33,7 +33,7 @@ export default function Navbar() {
           src={'/assets/Marvel logo.png'}
         />
       </Link>
-      {favorites.length > 0 && (
+      {favorites?.length > 0 && (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Link href='/favorites'>
             <Image

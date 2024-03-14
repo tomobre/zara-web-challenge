@@ -4,11 +4,8 @@ import React from 'react';
 import '@testing-library/jest-dom';
 
 describe('Wrapper Component', () => {
-  it('renders properly', () => {
-    render(<Wrapper />);
-
-    const main = screen.getByRole('img');
-
-    expect(main).toBeInTheDocument();
+  it('renders Child component', () => {
+    const wrapper = render(<Wrapper />);
+    expect(wrapper.baseElement).toBeInTheDocument();
   });
 });

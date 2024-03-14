@@ -4,10 +4,10 @@ import { getData, getSearchResult } from './fetch/fetch';
 import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
 
-export default async function Home({ searchParams }) {
+export default async function Home(props) {
   const data =
-    searchParams.search !== ''
-      ? await getSearchResult(searchParams.search)
+    props?.searchParams?.search !== ''
+      ? await getSearchResult(props?.searchParams?.search)
       : await getData();
   const characterList = data.data.results;
 

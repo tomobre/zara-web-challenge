@@ -62,8 +62,10 @@ export default function Card({ image, name, id, description }) {
         </Link>
       )}
       <Footer>
-        <p style={{ color: 'white' }}>{name}</p>
-        <div onClick={() => toggleFavorite(id)}>
+        <p role='paragraph' style={{ color: 'white' }}>
+          {name}
+        </p>
+        <div role='fav' onClick={() => toggleFavorite(id)}>
           {checkFav === -1 ? (
             <Image
               priority={false}

@@ -22,22 +22,22 @@ const Title = styled.h3`
 
 export default function Favorites({ searchParams }) {
   const { favorites } = useAppContext();
-  const search = searchParams.search;
+  const search = searchParams?.search;
   const data =
     search !== ''
-      ? favorites.filter((favorite) =>
+      ? favorites?.filter((favorite) =>
           favorite.name.toLowerCase().startsWith(search?.toLowerCase()),
         )
       : favorites;
 
   return (
     <div>
-      <Title>FAVORITES</Title>
+      <Title role='heading'>FAVORITES</Title>
       <SearchBox />
-      <ResultCount count={data.length} />
-      {data.length > 0 ? (
+      <ResultCount count={data?.length} />
+      {data?.length > 0 ? (
         <Wrapper>
-          {data.map((character) => {
+          {data?.map((character) => {
             return (
               <Card
                 description={character.description}
@@ -51,11 +51,11 @@ export default function Favorites({ searchParams }) {
         </Wrapper>
       ) : search !== '' ? (
         <NoContentWrapper>
-          <h3>No heroes found</h3>
+          <h3 role='no-heores-heading'>No heroes found</h3>
         </NoContentWrapper>
       ) : (
         <NoContentWrapper>
-          <h3>You have no favorite Heroes</h3>
+          <h3 role='no-favorites-heading'>You have no favorite Heroes</h3>
         </NoContentWrapper>
       )}
     </div>

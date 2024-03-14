@@ -30,8 +30,12 @@ export default function ComicCard({ image, title, date }) {
           src={'/assets/image_not_available.webp'}
         />
       )}
-      <h3 style={{ fontSize: '13px' }}>{title}</h3>
-      <p style={{ fontSize: '13px' }}>{date}</p>
+      <h3 role='heading' style={{ fontSize: '13px' }}>
+        {title}
+      </h3>
+      <p role='paragraph' style={{ fontSize: '13px' }}>
+        {date}
+      </p>
     </Wrapper>
   );
 }

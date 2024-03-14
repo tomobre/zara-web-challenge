@@ -13,8 +13,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }) {
-  const { id } = params;
+export default async function Page(props) {
+  const id = props?.params?.id;
   const fetchData = await getCharacter(id);
   const fetchCharacterComics = await getCharacterComics(id);
   const { results: characterResults } = fetchData.data;
@@ -30,6 +30,7 @@ export default async function Page({ params }) {
       />
       <Wrapper color={'white'}>
         <h3
+          role='headingTitle'
           style={{
             marginTop: '1.5rem',
             marginBottom: '1.5rem',

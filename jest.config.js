@@ -19,5 +19,7 @@ module.exports = async () => {
     '^@/(.*)$': '<rootDir>/$1',
   };
 
-  return { ...jestConfig, moduleNameMapper };
+  const setupFilesAfterEnv = ['<rootDir>/jest.setup.js'];
+
+  return { ...jestConfig, moduleNameMapper, setupFilesAfterEnv };
 };

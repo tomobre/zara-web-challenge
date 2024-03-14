@@ -3,12 +3,11 @@ import NavBar from '@/app/components/navbar/NavBar';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-describe('NavBar Component', () => {
+describe('Navbar Component', () => {
   it('renders properly', () => {
     render(<NavBar />);
+    const image = screen.getByAltText('marvel-logo');
 
-    const main = screen.getByRole('img');
-
-    expect(main).toBeInTheDocument();
+    expect(image).toBeInTheDocument();
   });
 });

@@ -40,7 +40,7 @@ export default function SearchBox() {
   const [query] = useDebounce(text, 500);
 
   useEffect(() => {
-    router.push(`?search=${query}`);
+    router?.push(`?search=${query}`);
   }, [query, router]);
 
   //  console.log(characterList);
@@ -48,6 +48,7 @@ export default function SearchBox() {
     <Container>
       <span>🔍</span>
       <Input
+        role='search'
         placeholder=' SEARCH A CHARACTER...'
         onChange={(e) => {
           setText(e.target.value);

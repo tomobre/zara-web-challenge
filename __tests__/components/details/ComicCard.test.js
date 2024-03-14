@@ -8,8 +8,8 @@ describe('ComicCard Component', () => {
     render(<ComicCard />);
 
     const main = screen.getByRole('img');
-    const h3 = screen.getByRole('h3');
-    const p = screen.getByRole('p');
+    const h3 = screen.getByRole('heading');
+    const p = screen.getByRole('paragraph');
 
     expect(main).toBeInTheDocument();
     expect(h3).toBeInTheDocument();
