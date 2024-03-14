@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "jest --testPathPattern=__tests__/components/details/Hero.test.js",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage"
   },

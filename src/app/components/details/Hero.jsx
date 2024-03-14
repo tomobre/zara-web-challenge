@@ -35,7 +35,7 @@ const Name = styled.h2`
 
 export default function Hero({ name, description, image, id }) {
   const { favorites, setFavorites } = useAppContext();
-  const checkFav = favorites.findIndex((character) => character.id === id);
+  const checkFav = favorites?.findIndex((character) => character.id === id);
 
   const toggleFavorite = (id) => {
     if (checkFav === -1) {
@@ -49,13 +49,23 @@ export default function Hero({ name, description, image, id }) {
   return (
     <Wrapper color={'black'}>
       <Grid>
-        <Image
-          priority={true}
-          alt={name}
-          width={320}
-          height={320}
-          src={image}
-        />
+        {image ? (
+          <Image
+            priority={true}
+            alt={name}
+            width={320}
+            height={320}
+            src={image}
+          />
+        ) : (
+          <Image
+            priority={false}
+            alt={'image hero not found'}
+            width={320}
+            height={320}
+            src={'/assets/image_not_available.webp'}
+          />
+        )}
         <GridCol>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Name>{name}</Name>
@@ -86,7 +96,9 @@ export default function Hero({ name, description, image, id }) {
             </div>
           </div>
 
-          <p style={{ color: 'white' }}>{description}</p>
+          <p role='paragraph' style={{ color: 'white' }}>
+            {description}
+          </p>
         </GridCol>
       </Grid>
     </Wrapper>

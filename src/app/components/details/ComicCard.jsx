@@ -13,13 +13,23 @@ const Wrapper = styled.div`
 export default function ComicCard({ image, title, date }) {
   return (
     <Wrapper>
-      <Image
-        priority={false}
-        alt={title}
-        width={150}
-        height={240}
-        src={image}
-      />
+      {image ? (
+        <Image
+          priority={false}
+          alt={title || 'hero image'}
+          width={150}
+          height={240}
+          src={image}
+        />
+      ) : (
+        <Image
+          priority={false}
+          alt={'image hero not found'}
+          width={150}
+          height={240}
+          src={'/assets/image_not_available.webp'}
+        />
+      )}
       <h3 style={{ fontSize: '13px' }}>{title}</h3>
       <p style={{ fontSize: '13px' }}>{date}</p>
     </Wrapper>

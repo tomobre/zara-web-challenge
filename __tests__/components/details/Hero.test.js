@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import Wrapper from '@/app/components/details/Wrapper';
+import Hero from '@/app/components/details/Hero';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-describe('Wrapper Component', () => {
+describe('Hero Component', () => {
   it('renders properly', () => {
-    render(<Wrapper />);
-
-    const main = screen.getByRole('img');
-
-    expect(main).toBeInTheDocument();
+    render(<Hero />);
+    const h2 = screen.getByRole('heading');
+    const p = screen.getByRole('paragraph');
+    expect(h2).toBeInTheDocument();
+    expect(p).toBeInTheDocument();
   });
 });

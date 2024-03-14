@@ -1,14 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import ComicCard from '@/app/components/details/ComicCard';
+import { render } from '@testing-library/react';
+import ScrollComic from '@/app/components/details/ScrollComic';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-describe('ComicCard Component', () => {
-  it('renders properly', () => {
-    render(<ComicCard />);
-
-    const main = screen.getByRole('img');
-
-    expect(main).toBeInTheDocument();
+describe('ScrollComic Component', () => {
+  it('renders component', () => {
+    const scroll = render(<ScrollComic />);
+    expect(scroll.baseElement).toBeInTheDocument();
   });
 });
