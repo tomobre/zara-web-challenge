@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Favorites from '@/app/favorites/page';
+import { FavoritesResult } from '@/app/favorites/page';
 
 // Mock useRouter:
 jest.mock('next/navigation', () => ({
@@ -23,7 +23,7 @@ jest.mock('@/src/app/components/ResultCount', () => () => (
 
 describe('Favorites page', () => {
   it('it should render properly the components inside', () => {
-    render(<Favorites />);
+    render(<FavoritesResult />);
     const title = screen.getByRole('heading');
     expect(title).toBeInTheDocument();
     expect(screen.queryByTestId('child1')).toBeInTheDocument();

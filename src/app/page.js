@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import Wrapper from './components/Wrapper';
 import Card from './components/Card';
 import { getData, getSearchResult } from './fetch/fetch';

@@ -5,6 +5,8 @@ import { useAppContext } from '../context';
 import styled from 'styled-components';
 import SearchBox from '../components/SearchBox';
 import ResultCount from '../components/ResultCount';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 const NoContentWrapper = styled.div`
   margin: 4rem;
@@ -20,16 +22,16 @@ const Title = styled.h3`
   margin-left: 2rem;
 `;
 
-export default function Favorites({ searchParams }) {
+export function FavoritesResult() {
+  const searchParams = useSearchParams();
   const { favorites } = useAppContext();
-  const search = searchParams?.search;
+  const search = searchParams.get('search');
   const data =
     search !== ''
       ? favorites?.filter((favorite) =>
           favorite.name.toLowerCase().startsWith(search?.toLowerCase()),
         )
       : favorites;
-
   return (
     <div>
       <Title role='heading'>FAVORITES</Title>
@@ -59,5 +61,13 @@ export default function Favorites({ searchParams }) {
         </NoContentWrapper>
       )}
     </div>
+  );
+}
+
+export default function Favorites() {
+  return (
+    <Suspense>
+      <FavoritesResult />
+    </Suspense>
   );
 }
