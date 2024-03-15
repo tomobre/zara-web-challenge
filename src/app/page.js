@@ -5,14 +5,14 @@ import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
 
 const testing = async () => {
-  const res = await fetch(
-    'https://zara-web-challenge-git-main-tomobres-projects.vercel.app/api/dummy',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: {},
-    },
-  );
+  const res = await fetch('https://dummyjson.com/products/add', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      title: 'BMW Pencil',
+      /* other product data */
+    }),
+  });
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
