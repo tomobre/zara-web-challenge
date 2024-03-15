@@ -19,6 +19,7 @@ async function fetchData() {
 }
 
 export default async function Home() {
+  if (!process.env.NEXT_PUBLIC_URL) return null;
   const data = await fetchData();
   const characterList = data?.data?.results;
 
