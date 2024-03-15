@@ -5,7 +5,7 @@ import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
 
 const testing = async () => {
-  const res = await fetch('/zara-web-challenge/api/dummy', {
+  const res = await fetch('/api/dummy', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: {},
