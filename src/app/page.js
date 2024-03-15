@@ -1,15 +1,16 @@
-export const dynamic = 'force-static';
+'use client';
 import Wrapper from './components/Wrapper';
 import Card from './components/Card';
 import { getData, getSearchResult } from './fetch/fetch';
 import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default async function Home(props) {
-  const data =
-    props?.searchParams?.search !== ''
-      ? await getSearchResult(props?.searchParams?.search)
-      : await getData();
+export async function HomeResult(props) {
+  const searchParams = useSearchParams();
+  const search = searchParams.get('search');
+  const data = search !== '' ? await getSearchResult(search) : await getData();
   const characterList = data.data.results;
 
   return (
@@ -44,5 +45,13 @@ export default async function Home(props) {
         </div>
       )}
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense>
+      <HomeResult />
+    </Suspense>
   );
 }

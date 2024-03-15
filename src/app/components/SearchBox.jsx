@@ -43,7 +43,6 @@ export default function SearchBox() {
     router?.push(`?search=${query}`);
   }, [query, router]);
 
-  //  console.log(characterList);
   return (
     <Container>
       <span>🔍</span>
