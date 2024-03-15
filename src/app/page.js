@@ -1,42 +1,35 @@
 import Wrapper from './components/Wrapper';
 import Card from './components/Card';
-import { getData, getSearchResult } from './fetch/fetch';
 import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
 
-const testing = async () => {
-  const res = await fetch('https://dummyjson.com/products/add', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      title: 'BMW Pencil',
-      /* other product data */
-    }),
+async function fetchData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data?search=`, {
+    cache: 'no-store',
   });
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-
     throw new Error('Failed to fetch data');
   }
 
   return res.json();
-};
+}
 
-export default async function Home(props) {
-  const test = await testing();
-  const searchParams = props?.searchParams;
-  const search = searchParams.search;
-  const data = search !== '' ? await getSearchResult(search) : await getData();
-  const characterList = data.data.results;
+export default async function Home() {
+  if (!process.env.NEXT_PUBLIC_URL) return null;
+  const data = await fetchData();
+  const characterList = data?.data?.results;
 
   return (
     <main>
       <SearchBox />
-      <ResultCount count={characterList.length} />
-      {characterList.length > 0 ? (
+      <ResultCount count={characterList?.length} />
+      {characterList?.length > 0 ? (
         <Wrapper>
-          {characterList.map((character) => {
+          {characterList?.map((character) => {
             return (
               <Card
                 key={character.id}
