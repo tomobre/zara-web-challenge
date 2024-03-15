@@ -4,7 +4,9 @@ import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
 
 async function fetchData() {
-  const res = await fetch('/api/data?search=', { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/data?search=`, {
+    cache: 'no-store',
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
