@@ -40,7 +40,7 @@ export default function SearchBox() {
   const [query] = useDebounce(text, 500);
 
   useEffect(() => {
-    router?.push(`?search=${query}`);
+    router?.replace(`?search=${query}`);
   }, [query, router]);
 
   return (

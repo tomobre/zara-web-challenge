@@ -1,15 +1,29 @@
-'use client';
 import Wrapper from './components/Wrapper';
 import Card from './components/Card';
 import { getData, getSearchResult } from './fetch/fetch';
 import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
 
-export async function HomeResult(props) {
-  const searchParams = useSearchParams();
-  const search = searchParams.get('search');
+const testing = async () => {
+  const res = await fetch('/zara-web-challenge/api/dummy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: {},
+  });
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export default async function Home(props) {
+  const test = await testing();
+  const searchParams = props?.searchParams;
+  const search = searchParams.search;
   const data = search !== '' ? await getSearchResult(search) : await getData();
   const characterList = data.data.results;
 
@@ -45,13 +59,5 @@ export async function HomeResult(props) {
         </div>
       )}
     </main>
-  );
-}
-
-export default function Home() {
-  return (
-    <Suspense>
-      <HomeResult />
-    </Suspense>
   );
 }
