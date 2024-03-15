@@ -1,25 +1,32 @@
-'use client';
 import Wrapper from './components/Wrapper';
 import Card from './components/Card';
-import { getData, getSearchResult } from './fetch/fetch';
 import SearchBox from './components/SearchBox.jsx';
 import ResultCount from './components/ResultCount';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
 
-export async function HomeResult(props) {
-  const searchParams = useSearchParams();
-  const search = searchParams.get('search');
-  const data = search !== '' ? await getSearchResult(search) : await getData();
-  const characterList = data.data.results;
+async function fetchData() {
+  const res = await fetch('http://localhost:4000/api/data?search=');
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+export default async function Home() {
+  const data = await fetchData();
+  const characterList = data?.data?.results;
 
   return (
     <main>
       <SearchBox />
-      <ResultCount count={characterList.length} />
-      {characterList.length > 0 ? (
+      <ResultCount count={characterList?.length} />
+      {characterList?.length > 0 ? (
         <Wrapper>
-          {characterList.map((character) => {
+          {characterList?.map((character) => {
             return (
               <Card
                 key={character.id}
@@ -45,13 +52,5 @@ export async function HomeResult(props) {
         </div>
       )}
     </main>
-  );
-}
-
-export default function Home() {
-  return (
-    <Suspense>
-      <HomeResult />
-    </Suspense>
   );
 }

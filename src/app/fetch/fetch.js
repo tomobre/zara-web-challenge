@@ -50,10 +50,11 @@ export async function getCharacterComics(id) {
   return res.json();
 }
 
-export async function getSearchResult(input) {
+export async function getSearchResult(searchparam) {
+  const search = searchparam.search;
   const hash = md5(TS + privateKey + publicKey);
   const res = await fetch(
-    `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&ts=${TS}&apikey=${apiKey}&hash=${hash}`,
+    `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${search}&ts=${TS}&apikey=${apiKey}&hash=${hash}`,
   );
 
   if (!res.ok) {
